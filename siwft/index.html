@@ -54,11 +54,7 @@
                 </header>
                 <div class="table-responsive">
                     <table class="table table-dark table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th><th>Nome</th><th>Rating</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>#</th><th>Nome</th><th>Rating</th></tr></thead>
                         <tbody>
                             <tr><td>1</td><td>George Augusto</td><td>1270</td></tr>
                             <tr><td>2</td><td>Maria Silva</td><td>1265</td></tr>
@@ -71,9 +67,72 @@
             </section>
 
             <section id="missoes" class="content-section">
-                </section>
+                <header class="content-header">
+                    <h1>Missões Swift</h1>
+                    <p>Complete missões para ganhar bonificações e melhorar seu rating!</p>
+                </header>
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card mission-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Vender 100 uni. de Picanha</h5>
+                                <p class="card-text">Eis aqui um desafio! Venda 100 unidades dentro de um tempo limite de 1 semana.</p>
+                                <div class="mission-details">
+                                    <span>Duração: 10 dias restantes</span>
+                                    <span>Status: <span class="badge bg-warning text-dark">Fazendo...</span></span>
+                                    <button class="btn btn-sm btn-secondary" disabled>Em Andamento</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <div class="card mission-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Vender 50 uni. de Linguiça Toscana</h5>
+                                <p class="card-text">Desafio de vendas para a linha de churrasco. Venda 50 unidades em uma semana.</p>
+                                <div class="mission-details">
+                                    <span>Duração: 7 dias restantes</span>
+                                    <span>Status: <span class="badge bg-light text-dark">Pendente</span></span>
+                                    <button class="btn btn-sm btn-primary">Começar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="recompensas" class="content-section">
-                </section>
+                <header class="content-header">
+                    <h1>Recompensas Swift</h1>
+                    <p>Ao completar Missões você pode ganhar recompensas. Pegue-as por aqui!</p>
+                </header>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card reward-card">
+                             <div class="card-body">
+                                <h5 class="card-title">+0.2% Bônus</h5>
+                                <p class="card-text">Parabéns! Por ter completado 20 missões, você conseguiu uma bonificação de 0.2% no final do mês.</p>
+                                <div class="reward-details">
+                                    <span>Mês Vigente: Fev/2025</span>
+                                    <span class="status-ganho">Status: Ganho</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card reward-card">
+                             <div class="card-body">
+                                <h5 class="card-title">+0.5% Bônus</h5>
+                                <p class="card-text">Parabéns! Por ter completado 70 missões, você receberá uma bonificação de 0.5% no final do mês.</p>
+                                <div class="reward-details">
+                                    <span>Mês Vigente: Jun/2025</span>
+                                    <span class="status-receber">Status: A Receber</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -91,7 +150,6 @@
             </ul>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>

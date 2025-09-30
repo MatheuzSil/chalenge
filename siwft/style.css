@@ -102,3 +102,27 @@ a:hover { color: #ff9a57; }
     justify-content: center;
     border-color: var(--border-color);
 }
+
+/* ===== CARDS DE MISSÃO E RECOMPENSA ===== */
+.mission-card, .reward-card {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+.mission-card .card-title, .reward-card .card-title {
+    color: var(--primary-orange);
+    font-weight: bold;
+}
+
+.mission-details, .reward-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9em;
+    color: var(--text-gray);
+}
+
+.status-ganho { color: #198754; font-weight: bold; } /* Verde do Bootstrap */
+.status-receber { color: #ffc107; font-weight: bold; } /* Amarelo do Bootstrap */
