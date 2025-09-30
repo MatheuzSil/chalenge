@@ -1,0 +1,104 @@
+/* ===== VARIÁVEIS DE COR ===== */
+:root {
+    --bg-dark: #121212;
+    --surface-dark: #1e1e1e;
+    --primary-orange: #f37321;
+    --text-light: #ffffff;
+    --text-gray: #b3b3b3;
+    --border-color: #2c2c2c;
+}
+
+/* ===== ESTILOS GERAIS ===== */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.logo { max-width: 80px; }
+
+/* ===== CUSTOMIZAÇÃO DO BOOTSTRAP ===== */
+.btn-primary {
+    --bs-btn-bg: var(--primary-orange);
+    --bs-btn-border-color: var(--primary-orange);
+    --bs-btn-hover-bg: #d15c1b;
+    --bs-btn-hover-border-color: #d15c1b;
+}
+a { color: var(--primary-orange); }
+a:hover { color: #ff9a57; }
+.form-control {
+    background-color: var(--bg-dark);
+    border-color: var(--border-color);
+    color: var(--text-light);
+}
+.form-control:focus {
+    background-color: var(--bg-dark);
+    border-color: var(--primary-orange);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.25rem rgba(243, 115, 33, 0.25);
+}
+
+/* ===== PÁGINAS DE LOGIN/CADASTRO ===== */
+.login-page {
+    background-image: url('https://i.imgur.com/gKj0roT.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.card-auth {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== DASHBOARD ===== */
+.sidebar {
+    width: 250px;
+    background-color: var(--surface-dark);
+    border-right: 1px solid var(--border-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.sidebar-header { text-align: center; margin-bottom: 40px; }
+.nav-links { flex-grow: 1; }
+.nav-links .nav-link {
+    color: var(--text-gray);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.nav-links .nav-link:hover {
+    background-color: var(--border-color);
+    color: var(--text-light);
+}
+.nav-links .nav-link.active {
+    background-color: var(--primary-orange);
+    color: var(--text-light);
+}
+.user-profile {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    text-align: center;
+}
+.main-content { padding: 30px; }
+.content-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+.content-section { display: none; }
+.content-section.active { display: block; }
+
+.metric-card {
+    background-color: var(--surface-dark);
+    color: var(--text-light);
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: var(--border-color);
+}
