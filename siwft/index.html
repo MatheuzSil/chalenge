@@ -34,16 +34,261 @@
 
             <section id="metricas" class="content-section active">
                 <header class="content-header">
-                    <h1>Métricas do Perfil</h1>
+                    <h1>📊 Métricas do Perfil</h1>
                     <p>Aqui você pode verificar seu progresso individual de forma simples e eficiente!</p>
+                    
+                    <div class="performance-overview">
+                        <div class="overview-card">
+                            <div class="overview-icon">📈</div>
+                            <div class="overview-content">
+                                <div class="overview-title">Performance Geral</div>
+                                <div class="overview-value">Excelente</div>
+                                <div class="overview-trend up">↗ +12% este mês</div>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">🏆</div>
+                            <div class="overview-content">
+                                <div class="overview-title">Ranking Nacional</div>
+                                <div class="overview-value">#5</div>
+                                <div class="overview-trend up">↗ +2 posições</div>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">⚡</div>
+                            <div class="overview-content">
+                                <div class="overview-title">Streak Atual</div>
+                                <div class="overview-value">7 dias</div>
+                                <div class="overview-trend neutral">🔥 Mantendo!</div>
+                            </div>
+                        </div>
+                    </div>
                 </header>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Vendas x Mês</div></div>
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Recompensas no último mês</div></div>
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Rating x Mês</div></div>
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Progresso de Ranking</div></div>
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Total de Missões Concluídas</div></div>
-                    <div class="col-md-6 col-lg-4 mb-4"><div class="card metric-card">Total de Recompensas Ganhas</div></div>
+
+                <div class="metrics-grid">
+                    <!-- Vendas x Mês -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">💰</div>
+                            <div class="metric-title">Vendas Mensais</div>
+                        </div>
+                        <div class="metric-chart">
+                            <div class="simple-chart">
+                                <div class="chart-bars">
+                                    <div class="chart-bar" data-value="35000" style="height: 60%">
+                                        <span class="bar-label">Jan</span>
+                                    </div>
+                                    <div class="chart-bar" data-value="42000" style="height: 72%">
+                                        <span class="bar-label">Fev</span>
+                                    </div>
+                                    <div class="chart-bar" data-value="38000" style="height: 65%">
+                                        <span class="bar-label">Mar</span>
+                                    </div>
+                                    <div class="chart-bar" data-value="48000" style="height: 82%">
+                                        <span class="bar-label">Abr</span>
+                                    </div>
+                                    <div class="chart-bar" data-value="45230" style="height: 77%">
+                                        <span class="bar-label">Mai</span>
+                                    </div>
+                                </div>
+                                <div class="chart-legend">
+                                    <span class="legend-item">📈 Crescimento consistente</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metric-stats">
+                            <div class="stat">
+                                <span class="stat-label">Este Mês</span>
+                                <span class="stat-value">R$ 45.230</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Meta</span>
+                                <span class="stat-value">R$ 50.000</span>
+                            </div>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 90.5%"></div>
+                            </div>
+                            <span class="progress-text">90.5% da meta mensal</span>
+                        </div>
+                    </div>
+
+                    <!-- Rating x Mês -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">⭐</div>
+                            <div class="metric-title">Rating de Avaliação</div>
+                        </div>
+                        <div class="rating-display">
+                            <div class="current-rating">4.8</div>
+                            <div class="rating-stars">
+                                <span class="star filled">⭐</span>
+                                <span class="star filled">⭐</span>
+                                <span class="star filled">⭐</span>
+                                <span class="star filled">⭐</span>
+                                <span class="star partial">⭐</span>
+                            </div>
+                        </div>
+                        <div class="metric-stats">
+                            <div class="stat">
+                                <span class="stat-label">Avaliações</span>
+                                <span class="stat-value">247</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">5 Estrelas</span>
+                                <span class="stat-value">198</span>
+                            </div>
+                        </div>
+                        <div class="rating-trend up">↗ +0.3 este mês</div>
+                    </div>
+
+                    <!-- Progresso de Ranking -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">🏅</div>
+                            <div class="metric-title">Progresso de Ranking</div>
+                        </div>
+                        <div class="ranking-visual">
+                            <div class="rank-badge current">
+                                <div class="rank-name">OURO</div>
+                                <div class="rank-score">1240</div>
+                            </div>
+                            <div class="rank-progress">
+                                <div class="progress-line">
+                                    <div class="progress-fill" style="width: 82.7%"></div>
+                                </div>
+                                <div class="next-rank">DIAMANTE (1500)</div>
+                            </div>
+                        </div>
+                        <div class="metric-stats">
+                            <div class="stat">
+                                <span class="stat-label">Faltam</span>
+                                <span class="stat-value">260 pts</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Posição</span>
+                                <span class="stat-value">#5 Nacional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Missões Concluídas -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">🎯</div>
+                            <div class="metric-title">Missões Concluídas</div>
+                        </div>
+                        <div class="missions-summary">
+                            <div class="big-number">12</div>
+                            <div class="missions-breakdown">
+                                <div class="mission-type">
+                                    <span class="type-dot vendas"></span>
+                                    <span>7 Vendas</span>
+                                </div>
+                                <div class="mission-type">
+                                    <span class="type-dot atendimento"></span>
+                                    <span>3 Atendimento</span>
+                                </div>
+                                <div class="mission-type">
+                                    <span class="type-dot metas"></span>
+                                    <span>2 Metas</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metric-stats">
+                            <div class="stat">
+                                <span class="stat-label">Este Mês</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Taxa Sucesso</span>
+                                <span class="stat-value">85%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recompensas Ganhas -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">🎁</div>
+                            <div class="metric-title">Recompensas Ganhas</div>
+                        </div>
+                        <div class="rewards-summary-metric">
+                            <div class="reward-item">
+                                <div class="reward-icon-small">💰</div>
+                                <div class="reward-info">
+                                    <div class="reward-amount">R$ 2.450</div>
+                                    <div class="reward-label">Bônus Total</div>
+                                </div>
+                            </div>
+                            <div class="reward-item">
+                                <div class="reward-icon-small">⚡</div>
+                                <div class="reward-info">
+                                    <div class="reward-amount">8.240</div>
+                                    <div class="reward-label">XP Ganho</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metric-stats">
+                            <div class="stat">
+                                <span class="stat-label">Recompensas</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Disponíveis</span>
+                                <span class="stat-value">4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atividade Semanal -->
+                    <div class="metric-card enhanced">
+                        <div class="metric-header">
+                            <div class="metric-icon">📅</div>
+                            <div class="metric-title">Atividade Semanal</div>
+                        </div>
+                        <div class="activity-heatmap">
+                            <div class="heatmap-day">
+                                <div class="day-label">S</div>
+                                <div class="activity-bar" style="height: 60%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">T</div>
+                                <div class="activity-bar" style="height: 80%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">Q</div>
+                                <div class="activity-bar" style="height: 90%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">Q</div>
+                                <div class="activity-bar" style="height: 100%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">S</div>
+                                <div class="activity-bar" style="height: 85%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">S</div>
+                                <div class="activity-bar" style="height: 40%"></div>
+                            </div>
+                            <div class="heatmap-day">
+                                <div class="day-label">D</div>
+                                <div class="activity-bar" style="height: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="activity-stats">
+                            <div class="stat">
+                                <span class="stat-label">Média Diária</span>
+                                <span class="stat-value">6.4h</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Melhor Dia</span>
+                                <span class="stat-value">Quinta</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -68,32 +313,255 @@
 
             <section id="missoes" class="content-section">
                 <header class="content-header">
-                    <h1>Missões Swift</h1>
+                    <h1>🎯 Missões Swift</h1>
                     <p>Complete missões para ganhar bonificações e melhorar seu rating!</p>
+                    <div class="mission-stats">
+                        <div class="stats-card">
+                            <div class="stats-number">12</div>
+                            <div class="stats-label">Missões Completas</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number">3</div>
+                            <div class="stats-label">Em Andamento</div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-number">8</div>
+                            <div class="stats-label">Disponíveis</div>
+                        </div>
+                    </div>
                 </header>
+
+                <!-- Filtros de Missão -->
+                <div class="mission-filters mb-4">
+                    <button class="btn btn-outline-light btn-sm active" data-filter="all">Todas</button>
+                    <button class="btn btn-outline-light btn-sm" data-filter="vendas">🛒 Vendas</button>
+                    <button class="btn btn-outline-light btn-sm" data-filter="atendimento">💬 Atendimento</button>
+                    <button class="btn btn-outline-light btn-sm" data-filter="metas">🎯 Metas</button>
+                    <button class="btn btn-outline-light btn-sm" data-filter="bonus">💰 Bônus Especial</button>
+                </div>
+
                 <div class="row">
-                    <div class="col-12 mb-4">
-                        <div class="card mission-card">
+                    <!-- Missão em Andamento -->
+                    <div class="col-lg-6 mb-4" data-category="vendas">
+                        <div class="card mission-card mission-active">
+                            <div class="mission-image">
+                                <img src="images/picanha.avif" alt="Picanha" class="card-img-top">
+                                <div class="mission-badge">🔥 Em Andamento</div>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Vender 100 uni. de Picanha</h5>
+                                <div class="mission-header">
+                                    <h5 class="card-title">Vender 100 uni. de Picanha</h5>
+                                    <div class="mission-reward">+150 XP | +R$ 200 Bônus</div>
+                                </div>
                                 <p class="card-text">Eis aqui um desafio! Venda 100 unidades dentro de um tempo limite de 1 semana.</p>
+                                
+                                <div class="progress-section">
+                                    <div class="progress-header">
+                                        <span class="progress-label">Progresso: 67/100 unidades</span>
+                                        <span class="progress-percentage">67%</span>
+                                    </div>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar bg-warning" style="width: 67%"></div>
+                                    </div>
+                                </div>
+
                                 <div class="mission-details">
-                                    <span>Duração: 10 dias restantes</span>
-                                    <span>Status: <span class="badge bg-warning text-dark">Fazendo...</span></span>
-                                    <button class="btn btn-sm btn-secondary" disabled>Em Andamento</button>
+                                    <div class="time-remaining">
+                                        <i class="bi bi-clock"></i>
+                                        <span>⏰ 3 dias, 12h restantes</span>
+                                    </div>
+                                    <div class="mission-actions">
+                                        <button class="btn btn-sm btn-outline-info me-2">📊 Ver Detalhes</button>
+                                        <button class="btn btn-sm btn-warning">⚡ Acelerar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mb-4">
+
+                    <!-- Missão Pendente -->
+                    <div class="col-lg-6 mb-4" data-category="vendas">
                         <div class="card mission-card">
+                            <div class="mission-image">
+                                <img src="images/linguiça.avif" alt="Linguiça" class="card-img-top">
+                                <div class="mission-badge mission-badge-available">✨ Disponível</div>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Vender 50 uni. de Linguiça Toscana</h5>
+                                <div class="mission-header">
+                                    <h5 class="card-title">Vender 50 uni. de Linguiça Toscana</h5>
+                                    <div class="mission-reward">+100 XP | +R$ 150 Bônus</div>
+                                </div>
                                 <p class="card-text">Desafio de vendas para a linha de churrasco. Venda 50 unidades em uma semana.</p>
+                                
+                                <div class="mission-requirements">
+                                    <h6>📋 Requisitos:</h6>
+                                    <ul>
+                                        <li>✅ Ter completado pelo menos 2 missões</li>
+                                        <li>✅ Rating mínimo: 1000</li>
+                                        <li>⏱️ Duração: 7 dias</li>
+                                    </ul>
+                                </div>
+
                                 <div class="mission-details">
-                                    <span>Duração: 7 dias restantes</span>
-                                    <span>Status: <span class="badge bg-light text-dark">Pendente</span></span>
-                                    <button class="btn btn-sm btn-primary">Começar</button>
+                                    <div class="difficulty-level">
+                                        <span class="difficulty medium">🌟 Dificuldade: Média</span>
+                                    </div>
+                                    <div class="mission-actions">
+                                        <button class="btn btn-sm btn-outline-info me-2">📖 Ler Mais</button>
+                                        <button class="btn btn-sm btn-primary">🚀 Começar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nova Missão - Atendimento -->
+                    <div class="col-lg-6 mb-4" data-category="atendimento">
+                        <div class="card mission-card">
+                            <div class="mission-image">
+                                <img src="images/employee.avif" alt="Atendimento" class="card-img-top">
+                                <div class="mission-badge mission-badge-available">✨ Disponível</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mission-header">
+                                    <h5 class="card-title">Excelência no Atendimento</h5>
+                                    <div class="mission-reward">+80 XP | +R$ 100 Bônus</div>
+                                </div>
+                                <p class="card-text">Receba avaliação 5⭐ de pelo menos 20 clientes em uma semana.</p>
+                                
+                                <div class="mission-requirements">
+                                    <h6>📋 Requisitos:</h6>
+                                    <ul>
+                                        <li>⭐ Manter média de avaliação ≥ 4.5</li>
+                                        <li>💬 Atender no mínimo 50 clientes</li>
+                                        <li>⏱️ Duração: 7 dias</li>
+                                    </ul>
+                                </div>
+
+                                <div class="mission-details">
+                                    <div class="difficulty-level">
+                                        <span class="difficulty easy">🌟 Dificuldade: Fácil</span>
+                                    </div>
+                                    <div class="mission-actions">
+                                        <button class="btn btn-sm btn-outline-info me-2">📖 Ler Mais</button>
+                                        <button class="btn btn-sm btn-primary">🚀 Começar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Missão Especial -->
+                    <div class="col-lg-6 mb-4" data-category="bonus">
+                        <div class="card mission-card mission-special">
+                            <div class="mission-image">
+                                <img src="images/increase.avif" alt="Meta Especial" class="card-img-top">
+                                <div class="mission-badge mission-badge-special">👑 Especial</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mission-header">
+                                    <h5 class="card-title">Meta Mensal Ouro</h5>
+                                    <div class="mission-reward">+500 XP | +R$ 1000 Bônus</div>
+                                </div>
+                                <p class="card-text">Alcance 120% da sua meta mensal e ganhe recompensas exclusivas!</p>
+                                
+                                <div class="progress-section">
+                                    <div class="progress-header">
+                                        <span class="progress-label">Meta Mensal: R$ 45.230 / R$ 50.000</span>
+                                        <span class="progress-percentage">90.5%</span>
+                                    </div>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar bg-gradient" style="width: 90.5%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mission-details">
+                                    <div class="time-remaining">
+                                        <i class="bi bi-calendar"></i>
+                                        <span>📅 15 dias restantes no mês</span>
+                                    </div>
+                                    <div class="mission-actions">
+                                        <button class="btn btn-sm btn-outline-warning me-2">📈 Estratégias</button>
+                                        <button class="btn btn-sm btn-gradient">💎 Ativar Boost</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Missão Completa (Exemplo) -->
+                    <div class="col-lg-6 mb-4" data-category="vendas">
+                        <div class="card mission-card mission-completed">
+                            <div class="mission-image">
+                                <img src="images/hamburguer.avif" alt="Hambúrguer" class="card-img-top">
+                                <div class="mission-badge mission-badge-completed">✅ Completa</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mission-header">
+                                    <h5 class="card-title">Vender 30 Hambúrguers Gourmet</h5>
+                                    <div class="mission-reward completed">+75 XP | +R$ 120 Bônus ✅</div>
+                                </div>
+                                <p class="card-text">Missão completada com sucesso! Você vendeu 35 hambúrguers em 4 dias.</p>
+                                
+                                <div class="completion-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Completado em:</span>
+                                        <span class="stat-value">4/7 dias</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Performance:</span>
+                                        <span class="stat-value text-success">117% ⭐</span>
+                                    </div>
+                                </div>
+
+                                <div class="mission-details">
+                                    <div class="completion-date">
+                                        <span>🎉 Completada em 28/09/2025</span>
+                                    </div>
+                                    <div class="mission-actions">
+                                        <button class="btn btn-sm btn-outline-success">📊 Ver Relatório</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Missão Bloqueada -->
+                    <div class="col-lg-6 mb-4" data-category="metas">
+                        <div class="card mission-card mission-locked">
+                            <div class="mission-image">
+                                <img src="images/premium.avif" alt="Premium" class="card-img-top mission-locked-img">
+                                <div class="mission-badge mission-badge-locked">🔒 Bloqueada</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="mission-header">
+                                    <h5 class="card-title">Vendedor Premium Elite</h5>
+                                    <div class="mission-reward">+1000 XP | +R$ 2500 Bônus</div>
+                                </div>
+                                <p class="card-text">Missão exclusiva para vendedores com rating Diamante (1500+).</p>
+                                
+                                <div class="unlock-requirements">
+                                    <h6>🔓 Para desbloquear:</h6>
+                                    <ul>
+                                        <li>💎 Rating mínimo: 1500 (atual: 1240)</li>
+                                        <li>🏆 Completar 50 missões (atual: 12/50)</li>
+                                        <li>⭐ Manter 4.8+ por 3 meses</li>
+                                    </ul>
+                                </div>
+
+                                <div class="unlock-progress">
+                                    <div class="progress-item">
+                                        <span>Rating: 1240/1500</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 82.7%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span>Missões: 12/50</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 24%"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,32 +571,212 @@
 
             <section id="recompensas" class="content-section">
                 <header class="content-header">
-                    <h1>Recompensas Swift</h1>
+                    <h1>🎁 Recompensas Swift</h1>
                     <p>Ao completar Missões você pode ganhar recompensas. Pegue-as por aqui!</p>
+                    
+                    <div class="rewards-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon">💰</div>
+                            <div class="summary-content">
+                                <div class="summary-number">R$ 2.450</div>
+                                <div class="summary-label">Total Ganho</div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">⭐</div>
+                            <div class="summary-content">
+                                <div class="summary-number">8.240</div>
+                                <div class="summary-label">XP Total</div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">🏆</div>
+                            <div class="summary-content">
+                                <div class="summary-number">15</div>
+                                <div class="summary-label">Conquistas</div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">🔥</div>
+                            <div class="summary-content">
+                                <div class="summary-number">7</div>
+                                <div class="summary-label">Sequência</div>
+                            </div>
+                        </div>
+                    </div>
                 </header>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card reward-card">
-                             <div class="card-body">
-                                <h5 class="card-title">+0.2% Bônus</h5>
-                                <p class="card-text">Parabéns! Por ter completado 20 missões, você conseguiu uma bonificação de 0.2% no final do mês.</p>
-                                <div class="reward-details">
-                                    <span>Mês Vigente: Fev/2025</span>
-                                    <span class="status-ganho">Status: Ganho</span>
+
+                <div class="rewards-tabs mb-4">
+                    <button class="btn btn-outline-light active" data-tab="disponiveis">💎 Disponíveis</button>
+                    <button class="btn btn-outline-light" data-tab="historico">📜 Histórico</button>
+                    <button class="btn btn-outline-light" data-tab="conquistas">🏆 Conquistas</button>
+                </div>
+
+                <div id="disponiveis" class="tab-content active">
+                    <div class="row">
+                        <!-- Recompensa Disponível -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-available">
+                                <div class="reward-glow"></div>
+                                <div class="card-body">
+                                    <div class="reward-icon">💰</div>
+                                    <h5 class="card-title">+0.5% Bônus Salarial</h5>
+                                    <p class="card-text">Parabéns! Por ter completado 70 missões, você ganhou uma bonificação salarial.</p>
+                                    <div class="reward-value">R$ 650,00</div>
+                                    <div class="reward-details">
+                                        <span>📅 Válido até: 31/10/2025</span>
+                                        <button class="btn btn-success btn-sm">🎁 Resgatar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recompensa XP -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-available">
+                                <div class="reward-glow"></div>
+                                <div class="card-body">
+                                    <div class="reward-icon">⭐</div>
+                                    <h5 class="card-title">Boost de XP Duplo</h5>
+                                    <p class="card-text">24 horas de XP em dobro para todas as suas atividades e missões!</p>
+                                    <div class="reward-value">2x XP</div>
+                                    <div class="reward-details">
+                                        <span>⚡ Duração: 24 horas</span>
+                                        <button class="btn btn-success btn-sm">🚀 Ativar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recompensa Especial -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-premium">
+                                <div class="reward-glow premium-glow"></div>
+                                <div class="card-body">
+                                    <div class="reward-icon">👑</div>
+                                    <h5 class="card-title">Acesso VIP Premium</h5>
+                                    <p class="card-text">1 mês de acesso às missões exclusivas e suporte prioritário.</p>
+                                    <div class="reward-value">VIP 30 dias</div>
+                                    <div class="reward-details">
+                                        <span>💎 Benefício Premium</span>
+                                        <button class="btn btn-gradient btn-sm">👑 Ativar VIP</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Voucher -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-available">
+                                <div class="reward-glow"></div>
+                                <div class="card-body">
+                                    <div class="reward-icon">🎫</div>
+                                    <h5 class="card-title">Vale Alimentação</h5>
+                                    <p class="card-text">Voucher para almoço em restaurantes parceiros da Swift.</p>
+                                    <div class="reward-value">R$ 50,00</div>
+                                    <div class="reward-details">
+                                        <span>🍽️ Válido por 30 dias</span>
+                                        <button class="btn btn-success btn-sm">📱 Gerar QR</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card reward-card">
-                             <div class="card-body">
-                                <h5 class="card-title">+0.5% Bônus</h5>
-                                <p class="card-text">Parabéns! Por ter completado 70 missões, você receberá uma bonificação de 0.5% no final do mês.</p>
-                                <div class="reward-details">
-                                    <span>Mês Vigente: Jun/2025</span>
-                                    <span class="status-receber">Status: A Receber</span>
+                </div>
+
+                <div id="historico" class="tab-content">
+                    <div class="row">
+                        <!-- Histórico de recompensas -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">✅</div>
+                                    <h5 class="card-title">+0.2% Bônus Salarial</h5>
+                                    <p class="card-text">Bonificação por completar 20 missões em Setembro.</p>
+                                    <div class="reward-value claimed">R$ 320,00</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Resgatado em 01/10/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>💳 Pago</button>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">✅</div>
+                                    <h5 class="card-title">Dia de Folga Extra</h5>
+                                    <p class="card-text">Dia de folga adicional por excelência no atendimento.</p>
+                                    <div class="reward-value claimed">1 dia</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Usado em 15/09/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>✅ Utilizado</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">✅</div>
+                                    <h5 class="card-title">Kit Produtos Swift</h5>
+                                    <p class="card-text">Kit exclusivo com produtos da linha premium Swift.</p>
+                                    <div class="reward-value claimed">Kit Premium</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Entregue em 28/08/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>📦 Entregue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="conquistas" class="tab-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card unlocked">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Primeiro Passo</div>
+                            <div class="achievement-desc">Complete sua primeira missão</div>
+                        </div>
+                        
+                        <div class="achievement-card unlocked">
+                            <div class="achievement-icon">🔥</div>
+                            <div class="achievement-name">Sequência de Fogo</div>
+                            <div class="achievement-desc">Complete 5 missões seguidas</div>
+                        </div>
+                        
+                        <div class="achievement-card unlocked">
+                            <div class="achievement-icon">💎</div>
+                            <div class="achievement-name">Vendedor Diamante</div>
+                            <div class="achievement-desc">Alcance rating 1200+</div>
+                        </div>
+                        
+                        <div class="achievement-card unlocked">
+                            <div class="achievement-icon">⭐</div>
+                            <div class="achievement-name">Favorito dos Clientes</div>
+                            <div class="achievement-desc">Mantenha 4.8+ por 30 dias</div>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">👑</div>
+                            <div class="achievement-name">Rei das Vendas</div>
+                            <div class="achievement-desc">Venda R$ 100.000 em um mês</div>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 45%"></div>
+                                </div>
+                                <span>R$ 45.230 / R$ 100.000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">🌟</div>
+                            <div class="achievement-name">Lenda Swift</div>
+                            <div class="achievement-desc">Alcance o topo nacional</div>
+                            <div class="achievement-requirement">Requer rating 1500+</div>
                         </div>
                     </div>
                 </div>
@@ -148,6 +796,70 @@
                 <li class="nav-item"><a href="#" class="nav-link" data-target="missoes" data-bs-dismiss="offcanvas">Missões</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-target="recompensas" data-bs-dismiss="offcanvas">Recompensas</a></li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Modal Personalizado Swift -->
+    <div class="modal fade" id="swiftModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content swift-modal">
+                <div class="modal-header">
+                    <div class="modal-icon">
+                        <span id="modalIcon">ℹ️</span>
+                    </div>
+                    <h5 class="modal-title" id="modalTitle">Informação</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContent">
+                        <!-- Conteúdo será inserido dinamicamente -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelBtn">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmBtn">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de QR Code -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content swift-modal">
+                <div class="modal-header">
+                    <div class="modal-icon">
+                        <span>📱</span>
+                    </div>
+                    <h5 class="modal-title">Voucher Alimentação</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="qr-container">
+                        <div class="qr-code">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0id2hpdGUiLz48cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxMzAiIGhlaWdodD0iMTMwIiBmaWxsPSJibGFjayIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjExMCIgaGVpZ2h0PSIxMTAiIGZpbGw9IndoaXRlIi8+PHJlY3QgeD0iMzAiIHk9IjMwIiB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIGZpbGw9ImJsYWNrIi8+PHRleHQgeD0iNzUiIHk9Ijg1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Td2lmdDwvdGV4dD48L3N2Zz4=" alt="QR Code">
+                        </div>
+                        <div class="voucher-info">
+                            <div class="voucher-value">R$ 50,00</div>
+                            <div class="voucher-validity">Válido até: <span id="voucherDate"></span></div>
+                            <div class="voucher-code">Código: SWIFT2025X</div>
+                        </div>
+                    </div>
+                    <div class="usage-instructions">
+                        <h6>📝 Como usar:</h6>
+                        <ul class="text-start">
+                            <li>Mostre este QR Code na loja parceira</li>
+                            <li>Válido em restaurantes credenciados</li>
+                            <li>Não cumulativo com outras promoções</li>
+                            <li>Válido apenas uma vez</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-success me-2" onclick="downloadQR()">📥 Salvar QR</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
     </div>
 
