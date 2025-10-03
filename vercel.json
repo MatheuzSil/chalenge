@@ -3,24 +3,6 @@
     {
       "source": "/",
       "destination": "/siwft/login.html"
-    },
-    {
-      "source": "/login",
-      "destination": "/siwft/login.html"
-    },
-    {
-      "source": "/cadastro",
-      "destination": "/siwft/cadastro.html"
-    },
-    {
-      "source": "/dashboard",
-      "destination": "/siwft/index.html"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/siwft/(.*)",
-      "dest": "/siwft/$1"
     }
   ]
 }
