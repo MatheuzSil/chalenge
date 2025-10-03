@@ -15,12 +15,12 @@
                 <div class="card text-light card-auth">
                     <div class="card-body p-4">
                         <div class="text-center mb-4">
-                            <img src="swift_logo.png"Logo Swift" class="logo">
+                            <img src="swift_logo.png" alt="Logo Swift" class="logo">
                             <h2 class="mt-2">Funcionários</h2>
                         </div>
                         <h1 class="card-title text-center fs-4">Sejam bem-vindo!</h1>
                         <p class="card-subtitle text-center text-white-50 mb-4">Participe da nossa plataforma de gamificação.</p>
-                        <form>
+                        <form id="cadastroForm">
                             <div class="mb-3 text-start">
                                 <label for="nome" class="form-label">Nome</label>
                                 <input type="text" class="form-control" id="nome" required>
@@ -49,5 +49,13 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulação de cadastro - definir que o usuário está "logado"
+            sessionStorage.setItem('swiftLoggedIn', 'true');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>

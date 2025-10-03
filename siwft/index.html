@@ -6,6 +6,12 @@
     <title>Dashboard Swift Funcionários</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Verificar se o usuário está "logado" - usar sessionStorage para simular
+        if (!sessionStorage.getItem('swiftLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
 
@@ -24,6 +30,7 @@
             <div class="user-profile">
                 <p><strong>Rebeca Raissa Orlando</strong></p>
                 <small>Rating: 1240 | Ranking: Ouro</small>
+                <button class="btn btn-outline-light btn-sm mt-2 w-100" onclick="logout()">Sair</button>
             </div>
         </nav>
 
@@ -294,20 +301,287 @@
 
             <section id="rankings" class="content-section">
                 <header class="content-header">
-                    <h1>RANKING NACIONAL</h1>
-                    <p>Acompanhe seu progresso em escala nacional.</p>
+                    <h1>🏆 RANKINGS SWIFT</h1>
+                    <p>Descubra onde você está entre os melhores funcionários do Brasil!</p>
+                    
+                    <!-- Estatísticas Pessoais -->
+                    <div class="ranking-personal-stats">
+                        <div class="personal-card">
+                            <div class="personal-avatar">
+                                <div class="avatar-circle">RR</div>
+                                <div class="ranking-badge rank-5">TOP 5</div>
+                            </div>
+                            <div class="personal-info">
+                                <h3>Rebeca Raissa Orlando</h3>
+                                <div class="current-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">#5</span>
+                                        <span class="stat-label">Posição Nacional</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">1240</span>
+                                        <span class="stat-label">Rating Atual</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">+15</span>
+                                        <span class="stat-label">Esta Semana</span>
+                                    </div>
+                                </div>
+                                <div class="tier-progress">
+                                    <div class="tier-info">
+                                        <span class="current-tier">🥇 OURO</span>
+                                        <span class="next-tier">Para 💎 PLATINA: +60 pontos</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar tier-gold" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </header>
-                <div class="table-responsive">
-                    <table class="table table-dark table-striped table-hover">
-                        <thead><tr><th>#</th><th>Nome</th><th>Rating</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>George Augusto</td><td>1270</td></tr>
-                            <tr><td>2</td><td>Maria Silva</td><td>1265</td></tr>
-                            <tr><td>3</td><td>João Pereira</td><td>1250</td></tr>
-                            <tr><td>4</td><td>Ana Costa</td><td>1245</td></tr>
-                            <tr><td>5</td><td>Rebeca Raissa Orlando</td><td>1240</td></tr>
-                        </tbody>
-                    </table>
+
+                <!-- Filtros de Ranking -->
+                <div class="ranking-filters mb-4">
+                    <button class="btn btn-outline-light active" data-filter="nacional">🇧🇷 Nacional</button>
+                    <button class="btn btn-outline-light" data-filter="regional">🏙️ Regional</button>
+                    <button class="btn btn-outline-light" data-filter="loja">🏪 Loja</button>
+                    <button class="btn btn-outline-light" data-filter="mensal">📅 Mensal</button>
+                    <button class="btn btn-outline-light" data-filter="semanal">⚡ Semanal</button>
+                </div>
+
+                <!-- Pódio dos Top 3 -->
+                <div class="podium-section mb-5">
+                    <h2 class="section-title">🎖️ Pódio Nacional</h2>
+                    <div class="podium">
+                        <!-- 2º Lugar -->
+                        <div class="podium-position second">
+                            <div class="podium-medal">🥈</div>
+                            <div class="podium-avatar">
+                                <img src="https://i.pravatar.cc/100?img=1" alt="Maria Silva">
+                                <div class="position-number">2</div>
+                            </div>
+                            <div class="podium-info">
+                                <h4>Maria Silva</h4>
+                                <div class="podium-rating">1265</div>
+                                <div class="podium-stats">
+                                    <span>📊 98.2% aprovação</span>
+                                    <span>🏆 15 conquistas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1º Lugar -->
+                        <div class="podium-position first">
+                            <div class="podium-medal">🥇</div>
+                            <div class="podium-crown">👑</div>
+                            <div class="podium-avatar champion">
+                                <img src="https://i.pravatar.cc/100?img=5" alt="George Augusto">
+                                <div class="position-number golden">1</div>
+                            </div>
+                            <div class="podium-info">
+                                <h4>George Augusto</h4>
+                                <div class="podium-rating champion">1270</div>
+                                <div class="podium-title">👑 CAMPEÃO NACIONAL</div>
+                                <div class="podium-stats">
+                                    <span>📊 99.1% aprovação</span>
+                                    <span>🏆 23 conquistas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3º Lugar -->
+                        <div class="podium-position third">
+                            <div class="podium-medal">🥉</div>
+                            <div class="podium-avatar">
+                                <img src="https://i.pravatar.cc/100?img=3" alt="João Pereira">
+                                <div class="position-number">3</div>
+                            </div>
+                            <div class="podium-info">
+                                <h4>João Pereira</h4>
+                                <div class="podium-rating">1250</div>
+                                <div class="podium-stats">
+                                    <span>📊 97.8% aprovação</span>
+                                    <span>🏆 12 conquistas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranking Completo -->
+                <div class="ranking-list">
+                    <h2 class="section-title">📊 Ranking Completo</h2>
+                    
+                    <!-- Posição 4 -->
+                    <div class="ranking-card position-4">
+                        <div class="rank-number">4</div>
+                        <div class="player-avatar">
+                            <img src="https://i.pravatar.cc/80?img=4" alt="Ana Costa">
+                        </div>
+                        <div class="player-info">
+                            <div class="player-name">Ana Costa</div>
+                            <div class="player-location">📍 São Paulo, SP</div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="rating">1245</div>
+                            <div class="tier-badge silver">🥈 PRATA</div>
+                        </div>
+                        <div class="player-metrics">
+                            <div class="metric">
+                                <span class="metric-value">96.5%</span>
+                                <span class="metric-label">Aprovação</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">11</span>
+                                <span class="metric-label">Conquistas</span>
+                            </div>
+                        </div>
+                        <div class="trend trend-up">↗️ +5</div>
+                    </div>
+
+                    <!-- Posição 5 - Você -->
+                    <div class="ranking-card position-5 current-player">
+                        <div class="rank-number current">5</div>
+                        <div class="player-avatar current">
+                            <div class="avatar-circle">RR</div>
+                            <div class="you-badge">VOCÊ</div>
+                        </div>
+                        <div class="player-info">
+                            <div class="player-name">Rebeca Raissa Orlando</div>
+                            <div class="player-location">📍 Rio de Janeiro, RJ</div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="rating current">1240</div>
+                            <div class="tier-badge gold">🥇 OURO</div>
+                        </div>
+                        <div class="player-metrics">
+                            <div class="metric">
+                                <span class="metric-value">95.8%</span>
+                                <span class="metric-label">Aprovação</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">10</span>
+                                <span class="metric-label">Conquistas</span>
+                            </div>
+                        </div>
+                        <div class="trend trend-up">↗️ +15</div>
+                    </div>
+
+                    <!-- Posição 6 -->
+                    <div class="ranking-card position-6">
+                        <div class="rank-number">6</div>
+                        <div class="player-avatar">
+                            <img src="https://i.pravatar.cc/80?img=6" alt="Carlos Mendes">
+                        </div>
+                        <div class="player-info">
+                            <div class="player-name">Carlos Mendes</div>
+                            <div class="player-location">📍 Belo Horizonte, MG</div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="rating">1235</div>
+                            <div class="tier-badge gold">🥇 OURO</div>
+                        </div>
+                        <div class="player-metrics">
+                            <div class="metric">
+                                <span class="metric-value">94.2%</span>
+                                <span class="metric-label">Aprovação</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">9</span>
+                                <span class="metric-label">Conquistas</span>
+                            </div>
+                        </div>
+                        <div class="trend trend-down">↘️ -3</div>
+                    </div>
+
+                    <!-- Posição 7 -->
+                    <div class="ranking-card position-7">
+                        <div class="rank-number">7</div>
+                        <div class="player-avatar">
+                            <img src="https://i.pravatar.cc/80?img=7" alt="Fernanda Lima">
+                        </div>
+                        <div class="player-info">
+                            <div class="player-name">Fernanda Lima</div>
+                            <div class="player-location">📍 Porto Alegre, RS</div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="rating">1230</div>
+                            <div class="tier-badge gold">🥇 OURO</div>
+                        </div>
+                        <div class="player-metrics">
+                            <div class="metric">
+                                <span class="metric-value">93.7%</span>
+                                <span class="metric-label">Aprovação</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">8</span>
+                                <span class="metric-label">Conquistas</span>
+                            </div>
+                        </div>
+                        <div class="trend trend-up">↗️ +8</div>
+                    </div>
+
+                    <!-- Posição 8 -->
+                    <div class="ranking-card position-8">
+                        <div class="rank-number">8</div>
+                        <div class="player-avatar">
+                            <img src="https://i.pravatar.cc/80?img=8" alt="Ricardo Santos">
+                        </div>
+                        <div class="player-info">
+                            <div class="player-name">Ricardo Santos</div>
+                            <div class="player-location">📍 Salvador, BA</div>
+                        </div>
+                        <div class="player-stats">
+                            <div class="rating">1220</div>
+                            <div class="tier-badge silver">🥈 PRATA</div>
+                        </div>
+                        <div class="player-metrics">
+                            <div class="metric">
+                                <span class="metric-value">92.1%</span>
+                                <span class="metric-label">Aprovação</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">7</span>
+                                <span class="metric-label">Conquistas</span>
+                            </div>
+                        </div>
+                        <div class="trend trend-stable">➡️ 0</div>
+                    </div>
+
+                    <!-- Ver Mais -->
+                    <div class="ranking-load-more">
+                        <button class="btn btn-outline-light btn-lg" onclick="loadMoreRankings()">
+                            📊 Ver Mais Posições
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estatísticas Adicionais -->
+                <div class="ranking-additional-stats mt-5">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="stats-card">
+                                <div class="stats-icon">🚀</div>
+                                <div class="stats-number">+15</div>
+                                <div class="stats-label">Posições ganhas este mês</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="stats-card">
+                                <div class="stats-icon">🎯</div>
+                                <div class="stats-number">5º</div>
+                                <div class="stats-label">Melhor posição alcançada</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="stats-card">
+                                <div class="stats-icon">📈</div>
+                                <div class="stats-number">💎</div>
+                                <div class="stats-label">Próximo tier: PLATINA</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -613,16 +887,35 @@
                 </div>
 
                 <div id="disponiveis" class="tab-content active">
+                    <div class="rewards-featured mb-4">
+                        <div class="featured-reward">
+                            <div class="featured-glow"></div>
+                            <div class="featured-content">
+                                <div class="featured-badge">🎯 DESTAQUE DO MÊS</div>
+                                <div class="featured-icon">🏖️</div>
+                                <h3>Day Off Premium</h3>
+                                <p>Um dia de folga extra + vale presentes no valor de R$ 200,00</p>
+                                <div class="featured-value">1 DIA + R$ 200</div>
+                                <div class="featured-action">
+                                    <span class="featured-requirement">📊 Requer: Top 10 do Ranking</span>
+                                    <button class="btn btn-featured">✨ Desbloquear Agora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <!-- Recompensa Disponível -->
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-available">
                                 <div class="reward-glow"></div>
+                                <div class="reward-corner-badge">NOVO</div>
                                 <div class="card-body">
                                     <div class="reward-icon">💰</div>
                                     <h5 class="card-title">+0.5% Bônus Salarial</h5>
                                     <p class="card-text">Parabéns! Por ter completado 70 missões, você ganhou uma bonificação salarial.</p>
                                     <div class="reward-value">R$ 650,00</div>
+                                    <div class="reward-rarity rare">💎 RARO</div>
                                     <div class="reward-details">
                                         <span>📅 Válido até: 31/10/2025</span>
                                         <button class="btn btn-success btn-sm">🎁 Resgatar</button>
@@ -632,7 +925,7 @@
                         </div>
 
                         <!-- Recompensa XP -->
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-available">
                                 <div class="reward-glow"></div>
                                 <div class="card-body">
@@ -640,6 +933,7 @@
                                     <h5 class="card-title">Boost de XP Duplo</h5>
                                     <p class="card-text">24 horas de XP em dobro para todas as suas atividades e missões!</p>
                                     <div class="reward-value">2x XP</div>
+                                    <div class="reward-rarity common">⚡ COMUM</div>
                                     <div class="reward-details">
                                         <span>⚡ Duração: 24 horas</span>
                                         <button class="btn btn-success btn-sm">🚀 Ativar</button>
@@ -649,14 +943,16 @@
                         </div>
 
                         <!-- Recompensa Especial -->
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-premium">
                                 <div class="reward-glow premium-glow"></div>
+                                <div class="reward-corner-badge legendary">LENDÁRIO</div>
                                 <div class="card-body">
                                     <div class="reward-icon">👑</div>
                                     <h5 class="card-title">Acesso VIP Premium</h5>
                                     <p class="card-text">1 mês de acesso às missões exclusivas e suporte prioritário.</p>
-                                    <div class="reward-value">VIP 30 dias</div>
+                                    <div class="reward-value premium">VIP 30 dias</div>
+                                    <div class="reward-rarity legendary">👑 LENDÁRIO</div>
                                     <div class="reward-details">
                                         <span>💎 Benefício Premium</span>
                                         <button class="btn btn-gradient btn-sm">👑 Ativar VIP</button>
@@ -666,7 +962,7 @@
                         </div>
 
                         <!-- Voucher -->
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-available">
                                 <div class="reward-glow"></div>
                                 <div class="card-body">
@@ -674,9 +970,47 @@
                                     <h5 class="card-title">Vale Alimentação</h5>
                                     <p class="card-text">Voucher para almoço em restaurantes parceiros da Swift.</p>
                                     <div class="reward-value">R$ 50,00</div>
+                                    <div class="reward-rarity common">🍽️ COMUM</div>
                                     <div class="reward-details">
                                         <span>🍽️ Válido por 30 dias</span>
                                         <button class="btn btn-success btn-sm">📱 Gerar QR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recompensa de Transporte -->
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card reward-card reward-available">
+                                <div class="reward-glow"></div>
+                                <div class="card-body">
+                                    <div class="reward-icon">🚗</div>
+                                    <h5 class="card-title">Créditos Uber</h5>
+                                    <p class="card-text">R$ 100 em créditos para transporte durante o mês.</p>
+                                    <div class="reward-value">R$ 100,00</div>
+                                    <div class="reward-rarity uncommon">🚕 INCOMUM</div>
+                                    <div class="reward-details">
+                                        <span>🗓️ Expira em 30 dias</span>
+                                        <button class="btn btn-success btn-sm">🎁 Resgatar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kit Produtos -->
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card reward-card reward-available">
+                                <div class="reward-glow"></div>
+                                <div class="reward-corner-badge">LIMITADO</div>
+                                <div class="card-body">
+                                    <div class="reward-icon">📦</div>
+                                    <h5 class="card-title">Kit Swift Exclusivo</h5>
+                                    <p class="card-text">Camiseta + Squeeze + Caneta + Adesivos da marca Swift.</p>
+                                    <div class="reward-value">Kit Completo</div>
+                                    <div class="reward-rarity rare">🎁 RARO</div>
+                                    <div class="reward-details">
+                                        <span>📦 Entrega em 7 dias</span>
+                                        <button class="btn btn-success btn-sm">🛒 Solicitar</button>
                                     </div>
                                 </div>
                             </div>
@@ -685,15 +1019,32 @@
                 </div>
 
                 <div id="historico" class="tab-content">
+                    <div class="history-stats mb-4">
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Recompensas Resgatadas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">R$ 1.850</div>
+                            <div class="stat-label">Valor Total Recebido</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Dias de Folga Ganhos</div>
+                        </div>
+                    </div>
+
                     <div class="row">
-                        <!-- Histórico de recompensas -->
-                        <div class="col-md-6 mb-4">
+                        <!-- Histórico Outubro -->
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">RESGATADO</div>
                                 <div class="card-body">
-                                    <div class="reward-icon grayscale">✅</div>
+                                    <div class="reward-icon grayscale">💰</div>
                                     <h5 class="card-title">+0.2% Bônus Salarial</h5>
                                     <p class="card-text">Bonificação por completar 20 missões em Setembro.</p>
                                     <div class="reward-value claimed">R$ 320,00</div>
+                                    <div class="reward-rarity-claimed">💎 RARO</div>
                                     <div class="reward-details">
                                         <span class="status-ganho">🎉 Resgatado em 01/10/2025</span>
                                         <button class="btn btn-outline-secondary btn-sm" disabled>💳 Pago</button>
@@ -702,13 +1053,15 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">UTILIZADO</div>
                                 <div class="card-body">
-                                    <div class="reward-icon grayscale">✅</div>
+                                    <div class="reward-icon grayscale">🏖️</div>
                                     <h5 class="card-title">Dia de Folga Extra</h5>
                                     <p class="card-text">Dia de folga adicional por excelência no atendimento.</p>
                                     <div class="reward-value claimed">1 dia</div>
+                                    <div class="reward-rarity-claimed">🍽️ COMUM</div>
                                     <div class="reward-details">
                                         <span class="status-ganho">🎉 Usado em 15/09/2025</span>
                                         <button class="btn btn-outline-secondary btn-sm" disabled>✅ Utilizado</button>
@@ -717,16 +1070,71 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">ENTREGUE</div>
                                 <div class="card-body">
-                                    <div class="reward-icon grayscale">✅</div>
+                                    <div class="reward-icon grayscale">📦</div>
                                     <h5 class="card-title">Kit Produtos Swift</h5>
                                     <p class="card-text">Kit exclusivo com produtos da linha premium Swift.</p>
                                     <div class="reward-value claimed">Kit Premium</div>
+                                    <div class="reward-rarity-claimed">🎁 RARO</div>
                                     <div class="reward-details">
                                         <span class="status-ganho">🎉 Entregue em 28/08/2025</span>
                                         <button class="btn btn-outline-secondary btn-sm" disabled>📦 Entregue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Histórico Setembro -->
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">RESGATADO</div>
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">🎫</div>
+                                    <h5 class="card-title">Vale Alimentação</h5>
+                                    <p class="card-text">Voucher de R$ 75 para restaurantes parceiros.</p>
+                                    <div class="reward-value claimed">R$ 75,00</div>
+                                    <div class="reward-rarity-claimed">🍽️ COMUM</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Usado em 10/09/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>🍽️ Consumido</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">ATIVADO</div>
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">⭐</div>
+                                    <h5 class="card-title">Boost XP Triplo</h5>
+                                    <p class="card-text">48 horas de XP em triplo - evento especial.</p>
+                                    <div class="reward-value claimed">3x XP</div>
+                                    <div class="reward-rarity-claimed">🚕 INCOMUM</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Ativado em 05/09/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>⚡ Expirado</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Histórico Agosto -->
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card reward-card reward-claimed">
+                                <div class="claimed-ribbon">RESGATADO</div>
+                                <div class="card-body">
+                                    <div class="reward-icon grayscale">🚗</div>
+                                    <h5 class="card-title">Créditos Uber</h5>
+                                    <p class="card-text">R$ 150 em créditos para transporte.</p>
+                                    <div class="reward-value claimed">R$ 150,00</div>
+                                    <div class="reward-rarity-claimed">🚕 INCOMUM</div>
+                                    <div class="reward-details">
+                                        <span class="status-ganho">🎉 Usado em 20/08/2025</span>
+                                        <button class="btn btn-outline-secondary btn-sm" disabled>🚗 Consumido</button>
                                     </div>
                                 </div>
                             </div>
@@ -735,48 +1143,153 @@
                 </div>
 
                 <div id="conquistas" class="tab-content">
+                    <div class="achievements-progress-bar mb-4">
+                        <div class="progress-info">
+                            <span>Progresso de Conquistas</span>
+                            <span>8 / 15 desbloqueadas</span>
+                        </div>
+                        <div class="progress achievement-progress-main">
+                            <div class="progress-bar progress-bar-animated" style="width: 53%"></div>
+                        </div>
+                    </div>
+
+                    <div class="achievements-categories mb-4">
+                        <button class="btn btn-outline-light active" data-category="all">🏆 Todas (15)</button>
+                        <button class="btn btn-outline-light" data-category="sales">💰 Vendas (5)</button>
+                        <button class="btn btn-outline-light" data-category="performance">⚡ Performance (4)</button>
+                        <button class="btn btn-outline-light" data-category="social">👥 Social (3)</button>
+                        <button class="btn btn-outline-light" data-category="special">⭐ Especiais (3)</button>
+                    </div>
+
                     <div class="achievements-grid">
-                        <div class="achievement-card unlocked">
+                        <!-- Conquistas Desbloqueadas -->
+                        <div class="achievement-card unlocked" data-category="performance">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 15/09</div>
                             <div class="achievement-icon">🏆</div>
                             <div class="achievement-name">Primeiro Passo</div>
                             <div class="achievement-desc">Complete sua primeira missão</div>
+                            <div class="achievement-reward">+100 XP | +50 pontos</div>
                         </div>
                         
-                        <div class="achievement-card unlocked">
+                        <div class="achievement-card unlocked" data-category="performance">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 20/09</div>
                             <div class="achievement-icon">🔥</div>
                             <div class="achievement-name">Sequência de Fogo</div>
                             <div class="achievement-desc">Complete 5 missões seguidas</div>
+                            <div class="achievement-reward">+250 XP | Vale R$25</div>
                         </div>
                         
-                        <div class="achievement-card unlocked">
+                        <div class="achievement-card unlocked" data-category="sales">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 25/09</div>
                             <div class="achievement-icon">💎</div>
                             <div class="achievement-name">Vendedor Diamante</div>
                             <div class="achievement-desc">Alcance rating 1200+</div>
+                            <div class="achievement-reward">+500 XP | Boost XP</div>
                         </div>
                         
-                        <div class="achievement-card unlocked">
+                        <div class="achievement-card unlocked" data-category="social">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 28/09</div>
                             <div class="achievement-icon">⭐</div>
                             <div class="achievement-name">Favorito dos Clientes</div>
                             <div class="achievement-desc">Mantenha 4.8+ por 30 dias</div>
+                            <div class="achievement-reward">+300 XP | Kit Swift</div>
+                        </div>
+
+                        <div class="achievement-card unlocked" data-category="sales">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 01/10</div>
+                            <div class="achievement-icon">�</div>
+                            <div class="achievement-name">Chuva de Vendas</div>
+                            <div class="achievement-desc">Realize 50 vendas em uma semana</div>
+                            <div class="achievement-reward">+400 XP | Bônus R$100</div>
+                        </div>
+
+                        <div class="achievement-card unlocked" data-category="special">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 02/10</div>
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-name">Precisão Máxima</div>
+                            <div class="achievement-desc">100% de conclusão em 10 missões</div>
+                            <div class="achievement-reward">+350 XP | Day Off</div>
+                        </div>
+
+                        <div class="achievement-card unlocked" data-category="performance">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 03/10</div>
+                            <div class="achievement-icon">⚡</div>
+                            <div class="achievement-name">Velocidade da Luz</div>
+                            <div class="achievement-desc">Complete 3 missões em menos de 1 hora</div>
+                            <div class="achievement-reward">+200 XP | Boost Velocidade</div>
+                        </div>
+
+                        <div class="achievement-card unlocked" data-category="social">
+                            <div class="achievement-unlock-date">🎉 Desbloqueado em 03/10</div>
+                            <div class="achievement-icon">🤝</div>
+                            <div class="achievement-name">Mentor Swift</div>
+                            <div class="achievement-desc">Ajude 5 colegas em missões</div>
+                            <div class="achievement-reward">+300 XP | Badge Mentor</div>
                         </div>
                         
-                        <div class="achievement-card">
-                            <div class="achievement-icon">👑</div>
+                        <!-- Conquistas em Progresso -->
+                        <div class="achievement-card in-progress" data-category="sales">
+                            <div class="achievement-icon">�👑</div>
                             <div class="achievement-name">Rei das Vendas</div>
                             <div class="achievement-desc">Venda R$ 100.000 em um mês</div>
                             <div class="achievement-progress">
                                 <div class="progress">
-                                    <div class="progress-bar" style="width: 45%"></div>
+                                    <div class="progress-bar progress-bar-warning" style="width: 45%"></div>
                                 </div>
                                 <span>R$ 45.230 / R$ 100.000</span>
                             </div>
+                            <div class="achievement-reward">+800 XP | Bônus 0.5%</div>
+                        </div>
+
+                        <div class="achievement-card in-progress" data-category="performance">
+                            <div class="achievement-icon">🏃</div>
+                            <div class="achievement-name">Maratonista</div>
+                            <div class="achievement-desc">Complete 100 missões no total</div>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" style="width: 73%"></div>
+                                </div>
+                                <span>73 / 100 missões</span>
+                            </div>
+                            <div class="achievement-reward">+600 XP | VIP Access</div>
+                        </div>
+
+                        <div class="achievement-card in-progress" data-category="special">
+                            <div class="achievement-icon">🎪</div>
+                            <div class="achievement-name">Mestre dos Eventos</div>
+                            <div class="achievement-desc">Participe de 5 eventos especiais</div>
+                            <div class="achievement-progress">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" style="width: 60%"></div>
+                                </div>
+                                <span>3 / 5 eventos</span>
+                            </div>
+                            <div class="achievement-reward">+500 XP | Badge Especial</div>
                         </div>
                         
-                        <div class="achievement-card locked">
+                        <!-- Conquistas Bloqueadas -->
+                        <div class="achievement-card locked" data-category="special">
                             <div class="achievement-icon">🌟</div>
                             <div class="achievement-name">Lenda Swift</div>
                             <div class="achievement-desc">Alcance o topo nacional</div>
                             <div class="achievement-requirement">Requer rating 1500+</div>
+                            <div class="achievement-reward">+1000 XP | Título Lendário</div>
+                        </div>
+
+                        <div class="achievement-card locked" data-category="sales">
+                            <div class="achievement-icon">💎</div>
+                            <div class="achievement-name">Diamante Negro</div>
+                            <div class="achievement-desc">R$ 500.000 em vendas totais</div>
+                            <div class="achievement-requirement">Requer: Rei das Vendas</div>
+                            <div class="achievement-reward">+1200 XP | Bônus 1%</div>
+                        </div>
+
+                        <div class="achievement-card locked" data-category="social">
+                            <div class="achievement-icon">👥</div>
+                            <div class="achievement-name">Líder Inspirador</div>
+                            <div class="achievement-desc">Seja exemplo para 20 colegas</div>
+                            <div class="achievement-requirement">Requer: Mentor Swift</div>
+                            <div class="achievement-reward">+900 XP | Cargo de Líder</div>
                         </div>
                     </div>
                 </div>

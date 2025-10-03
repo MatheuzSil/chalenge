@@ -1336,4 +1336,281 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('🧪 Testando conclusão de missão...');
         testMissionCompletion();
     };
+
+    // ===== FUNCIONALIDADE CATEGORIAS DE CONQUISTAS =====
+    const categoryButtons = document.querySelectorAll('.achievements-categories .btn');
+    const achievementCards = document.querySelectorAll('.achievement-card');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Atualizar botão ativo
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filtrar conquistas
+            achievementCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in-out';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // ===== ANIMAÇÕES DE HOVER PARA RECOMPENSAS =====
+    const rewardCards = document.querySelectorAll('.reward-card');
+    rewardCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('reward-claimed')) {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.transition = 'all 0.3s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // ===== EFEITO DE BRILHO NAS RECOMPENSAS PREMIUM =====
+    const premiumCards = document.querySelectorAll('.reward-premium');
+    premiumCards.forEach(card => {
+        setInterval(() => {
+            const glow = card.querySelector('.premium-glow');
+            if (glow) {
+                glow.style.backgroundPosition = glow.style.backgroundPosition === '200% 0' ? '-200% 0' : '200% 0';
+            }
+        }, 2000);
+    });
+
+    // ===== FUNCIONALIDADE FILTROS DE RANKING =====
+    const rankingFilters = document.querySelectorAll('.ranking-filters .btn');
+    rankingFilters.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Atualizar botão ativo
+            rankingFilters.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Simular mudança de dados (em um caso real, faria uma requisição à API)
+            updateRankingData(filter);
+        });
+    });
+
+    // ===== ANIMAÇÃO DE ENTRADA DOS CARDS DE RANKING =====
+    const rankingCards = document.querySelectorAll('.ranking-card');
+    rankingCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100 * index);
+    });
+
+    // ===== EFEITO HOVER NO PÓDIO =====
+    const podiumPositions = document.querySelectorAll('.podium-position');
+    podiumPositions.forEach(position => {
+        position.addEventListener('mouseenter', function() {
+            this.style.transform += ' translateY(-10px)';
+        });
+        
+        position.addEventListener('mouseleave', function() {
+            if (this.classList.contains('first')) {
+                this.style.transform = 'scale(1.1)';
+            } else {
+                this.style.transform = 'scale(1)';
+            }
+        });
+    });
 });
+
+// ===== FUNÇÃO PARA ATUALIZAR DADOS DO RANKING =====
+function updateRankingData(filter) {
+    console.log(`🔄 Atualizando ranking para: ${filter}`);
+    
+    // Simular dados diferentes para cada filtro
+    const rankingData = {
+        nacional: {
+            title: '🇧🇷 RANKING NACIONAL',
+            description: 'Descubra onde você está entre os melhores funcionários do Brasil!'
+        },
+        regional: {
+            title: '🏙️ RANKING REGIONAL - SUDESTE',
+            description: 'Sua posição entre os funcionários da região Sudeste!'
+        },
+        loja: {
+            title: '🏪 RANKING DA LOJA - RJ Centro',
+            description: 'Veja sua classificação na loja do Rio de Janeiro - Centro!'
+        },
+        mensal: {
+            title: '📅 RANKING MENSAL - OUTUBRO',
+            description: 'Performance dos funcionários no mês de outubro!'
+        },
+        semanal: {
+            title: '⚡ RANKING SEMANAL',
+            description: 'Classificação da semana atual - corrida acirrada!'
+        }
+    };
+    
+    const data = rankingData[filter];
+    if (data) {
+        // Atualizar título e descrição
+        const header = document.querySelector('#rankings .content-header h1');
+        const description = document.querySelector('#rankings .content-header p');
+        
+        if (header) {
+            header.textContent = data.title;
+            header.style.animation = 'fadeIn 0.5s ease-in-out';
+        }
+        
+        if (description) {
+            description.textContent = data.description;
+        }
+        
+        // Efeito visual de carregamento
+        const rankingCards = document.querySelectorAll('.ranking-card, .podium-position');
+        rankingCards.forEach((card, index) => {
+            card.style.opacity = '0.5';
+            card.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 50 * index);
+        });
+        
+        // Mostrar modal informativo
+        setTimeout(() => {
+            showSwiftModal({
+                icon: '📊',
+                title: 'Ranking Atualizado!',
+                type: 'info',
+                content: `<p>✅ Dados do <strong>${data.title}</strong> atualizados com sucesso!</p><p>🔄 Rankings são atualizados a cada 15 minutos.</p>`,
+                showCancel: false,
+                confirmText: 'Entendi',
+                confirmClass: 'btn-info'
+            });
+        }, 1000);
+    }
+}
+
+// ===== FUNÇÃO PARA CARREGAR MAIS POSIÇÕES =====
+function loadMoreRankings() {
+    const loadMoreBtn = document.querySelector('.ranking-load-more .btn');
+    const rankingList = document.querySelector('.ranking-list');
+    
+    if (loadMoreBtn && rankingList) {
+        loadMoreBtn.textContent = '⏳ Carregando...';
+        loadMoreBtn.disabled = true;
+        
+        setTimeout(() => {
+            // Simular carregamento de mais posições
+            const newPositions = `
+                <div class="ranking-card position-9">
+                    <div class="rank-number">9</div>
+                    <div class="player-avatar">
+                        <img src="https://i.pravatar.cc/80?img=9" alt="Patricia Oliveira">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Patricia Oliveira</div>
+                        <div class="player-location">📍 Brasília, DF</div>
+                    </div>
+                    <div class="player-stats">
+                        <div class="rating">1210</div>
+                        <div class="tier-badge silver">🥈 PRATA</div>
+                    </div>
+                    <div class="player-metrics">
+                        <div class="metric">
+                            <span class="metric-value">91.5%</span>
+                            <span class="metric-label">Aprovação</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">6</span>
+                            <span class="metric-label">Conquistas</span>
+                        </div>
+                    </div>
+                    <div class="trend trend-up">↗️ +2</div>
+                </div>
+                
+                <div class="ranking-card position-10">
+                    <div class="rank-number">10</div>
+                    <div class="player-avatar">
+                        <img src="https://i.pravatar.cc/80?img=10" alt="Lucas Rodrigues">
+                    </div>
+                    <div class="player-info">
+                        <div class="player-name">Lucas Rodrigues</div>
+                        <div class="player-location">📍 Recife, PE</div>
+                    </div>
+                    <div class="player-stats">
+                        <div class="rating">1200</div>
+                        <div class="tier-badge silver">🥈 PRATA</div>
+                    </div>
+                    <div class="player-metrics">
+                        <div class="metric">
+                            <span class="metric-value">90.8%</span>
+                            <span class="metric-label">Aprovação</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">5</span>
+                            <span class="metric-label">Conquistas</span>
+                        </div>
+                    </div>
+                    <div class="trend trend-down">↘️ -1</div>
+                </div>
+            `;
+            
+            // Inserir antes do botão "Ver Mais"
+            const loadMoreSection = document.querySelector('.ranking-load-more');
+            loadMoreSection.insertAdjacentHTML('beforebegin', newPositions);
+            
+            // Animar entrada das novas posições
+            const newCards = rankingList.querySelectorAll('.ranking-card:nth-last-child(-n+2)');
+            newCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            loadMoreBtn.textContent = '📊 Ver Mais Posições';
+            loadMoreBtn.disabled = false;
+        }, 1500);
+    }
+}
+
+// ===== EXPOR FUNÇÃO GLOBALMENTE =====
+window.loadMoreRankings = loadMoreRankings;
+
+// ===== FUNÇÃO DE LOGOUT =====
+function logout() {
+    showSwiftModal({
+        icon: '👋',
+        title: 'Sair da Conta',
+        type: 'warning',
+        content: '<p>Tem certeza que deseja sair da sua conta?</p>',
+        showCancel: true,
+        confirmText: 'Sim, Sair',
+        cancelText: 'Cancelar',
+        confirmClass: 'btn-warning',
+        onConfirm: function() {
+            // Remover dados de sessão
+            sessionStorage.removeItem('swiftLoggedIn');
+            // Redirecionar para login
+            window.location.href = 'login.html';
+        }
+    });
+}
