@@ -1,0 +1,16 @@
+# Redirecionamentos para o Swift
+RewriteEngine On
+
+# Redirecionar raiz para login
+RewriteRule ^$ /siwft/login.html [R=301,L]
+
+# Permitir acesso direto aos arquivos na pasta siwft
+RewriteRule ^siwft/(.*)$ /siwft/$1 [L]
+
+# Headers de cache para recursos estáticos
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|avif)$">
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+# Configurar MIME types
+AddType image/avif .avif

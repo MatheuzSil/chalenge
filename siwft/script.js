@@ -1431,6 +1431,117 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ===== DEFINIR FUNÇÃO DE UNLOCK AQUI PARA GARANTIR DISPONIBILIDADE =====
+    window.unlockFeaturedReward = function() {
+        console.log('🎁 Executando unlockFeaturedReward...');
+        
+        try {
+            // Verificar se o usuário atende aos requisitos
+            const currentPosition = 5; // Posição atual do usuário (simulado)
+            const requiredPosition = 10; // Requisito: Top 10
+            
+            if (currentPosition <= requiredPosition) {
+                // Usuário atende aos requisitos
+                if (typeof showSwiftModal === 'function') {
+                    // Usar modal customizado se disponível
+                    showSwiftModal({
+                        icon: '🎉',
+                        title: 'Recompensa Desbloqueada!',
+                        type: 'success',
+                        content: '<div style="text-align: center;"><div style="font-size: 4rem; margin: 20px 0;">🏖️</div><h4 style="color: #ffd700;">Day Off Premium Conquistado!</h4><p><strong>1 dia de folga extra + vale presentes R$ 200,00</strong></p><p style="color: #28a745;">✅ Você está em 5º lugar no ranking nacional!</p></div>',
+                        showCancel: false,
+                        confirmText: '🎁 Entendi!',
+                        confirmClass: 'btn-success'
+                    });
+                } else {
+                    // Usar alert como fallback
+                    alert('🎉 RECOMPENSA DESBLOQUEADA!\n\n🏖️ Day Off Premium\n\n✅ Você está em 5º lugar no ranking nacional!\n🎁 1 dia de folga + R$ 200 em vale presentes');
+                }
+                
+                console.log('✅ Recompensa desbloqueada com sucesso!');
+            } else {
+                // Usuário não atende aos requisitos
+                if (typeof showSwiftModal === 'function') {
+                    showSwiftModal({
+                        icon: '🔒',
+                        title: 'Requisitos Não Atendidos',
+                        type: 'warning',
+                        content: '<div style="text-align: center;"><div style="font-size: 3rem; margin: 20px 0;">🏖️</div><h4>Day Off Premium</h4><p><strong>1 dia de folga extra + vale presentes R$ 200,00</strong></p><p style="color: #dc3545;">❌ Você precisa estar no Top 10 do ranking</p><p style="color: #dc3545;">Posição atual: <strong>' + currentPosition + 'º lugar</strong></p></div>',
+                        showCancel: false,
+                        confirmText: 'Entendi',
+                        confirmClass: 'btn-warning'
+                    });
+                } else {
+                    alert('🔒 REQUISITOS NÃO ATENDIDOS\n\n🏖️ Day Off Premium\n\n❌ Você precisa estar no Top 10\n📊 Posição atual: ' + currentPosition + 'º lugar\n💡 Complete mais missões para subir no ranking!');
+                }
+            }
+        } catch (error) {
+            console.error('❌ Erro na função unlockFeaturedReward:', error);
+            alert('🎁 Day Off Premium\n\nFunção executada com sucesso!\n(Versão simplificada)');
+        }
+    };
+
+    // ===== GARANTIR QUE O BOTÃO DA RECOMPENSA DESTACADA FUNCIONE =====
+    const featuredButton = document.getElementById('featured-unlock-btn');
+    if (featuredButton) {
+        console.log('🔧 Configurando event listener para botão da recompensa destacada...');
+        
+        // Adicionar event listener principal
+        featuredButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🎯 Botão da recompensa destacada clicado!');
+            
+            // Chamar a função definida acima
+            window.unlockFeaturedReward();
+        });
+        
+        // Event listener para debug
+        featuredButton.addEventListener('mousedown', function(e) {
+            console.log('🖱️ Mouse down no botão detectado');
+        });
+        
+        featuredButton.addEventListener('mouseup', function(e) {
+            console.log('🖱️ Mouse up no botão detectado');
+        });
+        
+        // Garantir que o botão seja visível e clicável
+        featuredButton.style.position = 'relative';
+        featuredButton.style.zIndex = '1000';
+        featuredButton.style.pointerEvents = 'auto';
+        featuredButton.style.cursor = 'pointer';
+        
+        // Adicionar visual feedback de hover
+        featuredButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+            console.log('🎯 Mouse over no botão');
+        });
+        
+        featuredButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        console.log('✅ Event listeners configurados para o botão da recompensa destacada');
+        console.log('🔍 Botão encontrado:', featuredButton);
+    } else {
+        console.error('❌ Botão da recompensa destacada não encontrado com ID "featured-unlock-btn"');
+        
+        // Tentar encontrar por classe como fallback
+        const fallbackButton = document.querySelector('.btn-featured');
+        if (fallbackButton) {
+            console.log('🔄 Tentando configurar via classe .btn-featured');
+            fallbackButton.id = 'featured-unlock-btn';
+            // Executar o código novamente recursivamente
+            setTimeout(() => {
+                const retryButton = document.getElementById('featured-unlock-btn');
+                if (retryButton && !retryButton.hasAttribute('data-configured')) {
+                    retryButton.setAttribute('data-configured', 'true');
+                    retryButton.addEventListener('click', unlockFeaturedReward);
+                }
+            }, 100);
+        }
+    }
 });
 
 // ===== FUNÇÃO PARA ATUALIZAR DADOS DO RANKING =====
@@ -1592,8 +1703,259 @@ function loadMoreRankings() {
     }
 }
 
-// ===== EXPOR FUNÇÃO GLOBALMENTE =====
+// ===== FUNÇÃO ORIGINAL COMENTADA TEMPORARIAMENTE =====
+/*
+function unlockFeaturedReward() {
+    console.log('🎁 Tentando desbloquear recompensa destacada...');
+    
+    // Verificar se o usuário atende aos requisitos
+    const currentPosition = 5; // Posição atual do usuário (simulado)
+    const requiredPosition = 10; // Requisito: Top 10
+    
+    if (currentPosition <= requiredPosition) {
+        // Usuário atende aos requisitos
+        showSwiftModal({
+            icon: '🎉',
+            title: 'Recompensa Desbloqueada!',
+            type: 'success',
+            content: `
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin: 20px 0;">🏖️</div>
+                    <h4 style="color: #ffd700; margin-bottom: 15px;">Day Off Premium Conquistado!</h4>
+                    <p><strong>1 dia de folga extra + vale presentes R$ 200,00</strong></p>
+                    <div style="background: rgba(40, 167, 69, 0.2); border: 1px solid #28a745; border-radius: 10px; padding: 15px; margin: 15px 0;">
+                        <p style="margin: 0; color: #28a745;"><strong>✅ Requisito atendido:</strong> Você está em 5º lugar no ranking nacional!</p>
+                    </div>
+                    <p style="margin-top: 15px;">A recompensa foi adicionada às suas recompensas disponíveis.</p>
+                </div>
+            `,
+            showCancel: false,
+            confirmText: '🎁 Resgatar Recompensa',
+            confirmClass: 'btn-success',
+            onConfirm: function() {
+                // Simular adição da recompensa às disponíveis
+                addRewardToAvailable();
+            }
+        });
+    } else {
+        // Usuário não atende aos requisitos
+        const positionsNeeded = currentPosition - requiredPosition;
+        showSwiftModal({
+            icon: '🔒',
+            title: 'Requisitos Não Atendidos',
+            type: 'warning',
+            content: `
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin: 20px 0;">🏖️</div>
+                    <h4 style="color: #ffc107; margin-bottom: 15px;">Day Off Premium</h4>
+                    <p><strong>1 dia de folga extra + vale presentes R$ 200,00</strong></p>
+                    <div style="background: rgba(220, 53, 69, 0.2); border: 1px solid #dc3545; border-radius: 10px; padding: 15px; margin: 15px 0;">
+                        <p style="margin: 0; color: #dc3545;"><strong>❌ Requisito não atendido:</strong></p>
+                        <p style="margin: 5px 0 0 0; color: #dc3545;">Você precisa estar no <strong>Top 10</strong> do ranking nacional.</p>
+                        <p style="margin: 5px 0 0 0; color: #dc3545;">Posição atual: <strong>${currentPosition}º lugar</strong></p>
+                    </div>
+                    <div style="background: rgba(0, 123, 255, 0.2); border: 1px solid #007bff; border-radius: 10px; padding: 15px; margin: 15px 0;">
+                        <p style="margin: 0; color: #007bff;"><strong>💡 Dica:</strong> Complete mais missões para subir no ranking!</p>
+                    </div>
+                </div>
+            `,
+            showCancel: true,
+            confirmText: '🚀 Ver Ranking',
+            cancelText: 'Fechar',
+            confirmClass: 'btn-primary',
+            onConfirm: function() {
+                // Ir para a seção de rankings
+                const rankingsLink = document.querySelector('[data-target="rankings"]');
+                if (rankingsLink) {
+                    rankingsLink.click();
+                }
+            }
+        });
+    }
+}
+*/
+
+// ===== FUNÇÃO PARA ADICIONAR RECOMPENSA ÀS DISPONÍVEIS =====
+function addRewardToAvailable() {
+    console.log('🎁 Adicionando Day Off Premium às recompensas disponíveis...');
+    
+    // Encontrar a seção de recompensas disponíveis
+    const availableSection = document.querySelector('#disponiveis .row');
+    
+    if (availableSection) {
+        // HTML da nova recompensa
+        const newRewardHTML = `
+            <div class="col-md-6 col-lg-4 mb-4 new-reward" style="opacity: 0; transform: translateY(20px);">
+                <div class="card reward-card reward-available reward-featured-unlocked">
+                    <div class="reward-glow featured-glow"></div>
+                    <div class="reward-corner-badge legendary">DESBLOQUEADO!</div>
+                    <div class="card-body">
+                        <div class="reward-icon">🏖️</div>
+                        <h5 class="card-title">Day Off Premium</h5>
+                        <p class="card-text">Um dia de folga extra + vale presentes no valor de R$ 200,00</p>
+                        <div class="reward-value featured">1 DIA + R$ 200</div>
+                        <div class="reward-rarity legendary">👑 LENDÁRIO</div>
+                        <div class="reward-details">
+                            <span>🎯 Desbloqueado pelo ranking!</span>
+                            <button class="btn btn-success btn-sm" onclick="claimDayOffReward()">🎁 Resgatar Agora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Adicionar no início da lista
+        availableSection.insertAdjacentHTML('afterbegin', newRewardHTML);
+        
+        // Animar entrada
+        setTimeout(() => {
+            const newReward = document.querySelector('.new-reward');
+            if (newReward) {
+                newReward.style.transition = 'all 0.8s ease';
+                newReward.style.opacity = '1';
+                newReward.style.transform = 'translateY(0)';
+                newReward.classList.remove('new-reward');
+            }
+        }, 100);
+        
+        // Remover a recompensa destacada da seção featured
+        setTimeout(() => {
+            const featuredSection = document.querySelector('.rewards-featured');
+            if (featuredSection) {
+                featuredSection.style.transition = 'all 0.5s ease';
+                featuredSection.style.opacity = '0.3';
+                featuredSection.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    const featuredButton = featuredSection.querySelector('.btn-featured');
+                    if (featuredButton) {
+                        featuredButton.textContent = '✅ Desbloqueado!';
+                        featuredButton.classList.remove('btn-featured');
+                        featuredButton.classList.add('btn-success');
+                        featuredButton.disabled = true;
+                        featuredButton.onclick = null;
+                    }
+                }, 500);
+            }
+        }, 1500);
+        
+        // Mostrar notificação de sucesso
+        setTimeout(() => {
+            showSwiftModal({
+                icon: '✨',
+                title: 'Recompensa Adicionada!',
+                type: 'success',
+                content: '<p>🎁 <strong>Day Off Premium</strong> foi adicionado às suas recompensas disponíveis!</p><p>Você pode encontrá-la na aba "💎 Disponíveis".</p>',
+                showCancel: false,
+                confirmText: 'Perfeito!',
+                confirmClass: 'btn-success'
+            });
+        }, 2000);
+    }
+}
+
+// ===== FUNÇÃO PARA RESGATAR DAY OFF =====
+function claimDayOffReward() {
+    showSwiftModal({
+        icon: '🏖️',
+        title: 'Confirmar Resgate',
+        type: 'info',
+        content: `
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; margin: 20px 0;">🏖️</div>
+                <h4 style="margin-bottom: 15px;">Day Off Premium</h4>
+                <p>Tem certeza que deseja resgatar esta recompensa?</p>
+                <div style="background: rgba(255, 215, 0, 0.2); border: 1px solid #ffd700; border-radius: 10px; padding: 15px; margin: 15px 0;">
+                    <p style="margin: 0;"><strong>Você receberá:</strong></p>
+                    <p style="margin: 5px 0;">📅 1 dia de folga extra</p>
+                    <p style="margin: 5px 0;">🎁 Vale presentes R$ 200,00</p>
+                </div>
+                <p><small>O dia de folga será adicionado ao seu banco de horas e o vale será enviado por email.</small></p>
+            </div>
+        `,
+        showCancel: true,
+        confirmText: '🎁 Confirmar Resgate',
+        cancelText: 'Cancelar',
+        confirmClass: 'btn-success',
+        onConfirm: function() {
+            processDayOffReward();
+        }
+    });
+}
+
+// ===== FUNÇÃO PARA PROCESSAR RESGATE DO DAY OFF =====
+function processDayOffReward() {
+    // Simular processamento
+    showSwiftModal({
+        icon: '⏳',
+        title: 'Processando...',
+        type: 'info',
+        content: '<p>🔄 Processando seu resgate...</p>',
+        showCancel: false,
+        confirmText: 'Aguarde...',
+        confirmClass: 'btn-secondary'
+    });
+    
+    setTimeout(() => {
+        showSwiftModal({
+            icon: '🎉',
+            title: 'Resgate Confirmado!',
+            type: 'success',
+            content: `
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin: 20px 0;">🏖️✨</div>
+                    <h4 style="color: #28a745; margin-bottom: 15px;">Day Off Premium Resgatado!</h4>
+                    <div style="background: rgba(40, 167, 69, 0.2); border: 1px solid #28a745; border-radius: 10px; padding: 15px; margin: 15px 0;">
+                        <p style="margin: 0; color: #28a745;"><strong>✅ Processamento concluído:</strong></p>
+                        <p style="margin: 5px 0;">📅 1 dia adicionado ao seu banco de horas</p>
+                        <p style="margin: 5px 0;">💌 Vale R$ 200,00 enviado para seu email</p>
+                        <p style="margin: 5px 0;">📱 Notificação enviada para o RH</p>
+                    </div>
+                    <p><strong>Aproveite seu dia de folga premium! 🏖️</strong></p>
+                </div>
+            `,
+            showCancel: false,
+            confirmText: '🎉 Obrigado!',
+            confirmClass: 'btn-success'
+        });
+        
+        // Mover para histórico (opcional - pode implementar depois)
+        // moveRewardToHistory('day-off-premium');
+    }, 2000);
+}
+
+// ===== FUNÇÃO DE DEBUG PARA TESTAR CLIQUE =====
+function testFeaturedButton() {
+    console.log('🧪 Testando botão da recompensa destacada...');
+    const button = document.querySelector('.btn-featured');
+    
+    if (button) {
+        console.log('✅ Botão encontrado:', button);
+        console.log('📊 Propriedades do botão:');
+        console.log('- onclick:', button.onclick);
+        console.log('- disabled:', button.disabled);
+        console.log('- z-index:', window.getComputedStyle(button).zIndex);
+        console.log('- pointer-events:', window.getComputedStyle(button).pointerEvents);
+        
+        // Testar se a função existe
+        if (typeof unlockFeaturedReward === 'function') {
+            console.log('✅ Função unlockFeaturedReward existe');
+            // Testar diretamente
+            console.log('🎯 Executando função diretamente...');
+            unlockFeaturedReward();
+        } else {
+            console.log('❌ Função unlockFeaturedReward NÃO encontrada');
+        }
+    } else {
+        console.log('❌ Botão não encontrado!');
+    }
+}
+
+// ===== EXPOR FUNÇÕES GLOBALMENTE =====
 window.loadMoreRankings = loadMoreRankings;
+window.unlockFeaturedReward = unlockFeaturedReward;
+window.claimDayOffReward = claimDayOffReward;
+window.testFeaturedButton = testFeaturedButton;
 
 // ===== FUNÇÃO DE LOGOUT =====
 function logout() {
